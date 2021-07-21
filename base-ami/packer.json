@@ -1,7 +1,7 @@
 {
 	"variables": {
-		"aws_access_key": "",
-		"aws_secret_key": ""
+		"aws_access_key": "AKIARL3FXW7EGEDF7FUZ",
+		"aws_secret_key": "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"
 	},
 	"builders": [
 		{
@@ -10,13 +10,17 @@
 			"secret_key": "{{user `aws_secret_key`}}",
 			"region": "us-east-1",
 			"instance_type": "t2.micro",
-			"ami-name": "packer-base-ami-{{timestamp}}",
+			"ami_name": "packer-base-ami-{{timestamp}}",
 			"source_ami_filter": {
 				"filters": {
-					"virtualization": "hvm",
-					"name": "
-				}
-			}
+					"virtualization-type": "hvm",
+					"name": "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*",
+					"root-device-type": "ebs"
+				},
+				"owners": ["099720109477"],
+				"most_recent": true
+			},
+			"ssh_username": "ubuntu"
 		}
 	]
 }

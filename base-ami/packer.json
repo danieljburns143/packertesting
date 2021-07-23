@@ -1,7 +1,7 @@
 {
 	"variables": {
-		"aws_access_key": "AKIARL3FXW7EGEDF7FUZ",
-		"aws_secret_key": "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"
+		"aws_access_key": "AKIAXIF52DWZQEDGWS77",
+		"aws_secret_key": "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"
 	},
 	"builders": [
 		{
@@ -21,6 +21,16 @@
 				"most_recent": true
 			},
 			"ssh_username": "ubuntu"
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"inline": ["sudo apt update -y && sudo apt upgrade -y"]
+		},
+		{
+			"type": "shell",
+			"script": "init.sh"
 		}
 	]
 }

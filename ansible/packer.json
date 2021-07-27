@@ -26,11 +26,19 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"inline": ["sudo apt update -y && sudo apt upgrade -y"]
+			"inline": [
+				"sudo apt-get update -y && sudo apt-get upgrade -y",
+				"sudo apt-get install ansible -y"
+			]
 		},
 		{
-			"type": "shell",
-			"script": "init.sh"
+			"type": "file",
+			"source": "app",
+			"destination": "/home/ubuntu/"
+		},
+		{
+			"type": "ansible-local",
+			"playbook_file": "playbook.yml"
 		}
 	]
 }
